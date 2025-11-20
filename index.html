@@ -628,11 +628,22 @@
                 // Remove temporary element
                 document.body.removeChild(tempSignature);
                 
-                // Convert canvas to PNG and download
+                // RESIZE THE CANVAS TO OPTIMAL EMAIL SIGNATURE SIZE
+                const resizedCanvas = document.createElement('canvas');
+                const targetWidth = 600; // Optimal width for email signatures
+                const targetHeight = canvas.height * (targetWidth / canvas.width);
+                
+                resizedCanvas.width = targetWidth;
+                resizedCanvas.height = targetHeight;
+                
+                const ctx = resizedCanvas.getContext('2d');
+                ctx.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+                
+                // Convert resized canvas to PNG and download
                 const link = document.createElement('a');
                 const fileName = `RBIDZ-Signature-${fullName.replace(/\s+/g, '-')}.png`;
                 link.download = fileName;
-                link.href = canvas.toDataURL('image/png');
+                link.href = resizedCanvas.toDataURL('image/png');
                 link.click();
                 
                 loadingMessage.style.display = 'none';
