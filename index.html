@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBIDZ | Professional Email Signature Generator</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #00008B;
+            --accent-red: #FF0000;
+            --light-blue: #4169E1;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #333;
+            --text-gray: #666;
+            --white: #ffffff;
+            --shadow: 0 5px 25px rgba(0,0,0,0.08);
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            margin: 0;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--dark-gray);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: var(--white); 
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--primary-blue);
+            position: relative;
+        }
+        
+        .header:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-red);
+        }
+        
+        .header h1 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .header p {
+            color: var(--text-gray);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vision-statement {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 139, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-statement:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        .section-title {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title:before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 22px;
+            background: var(--accent-red);
+            border-radius: 2px;
+        }
+        
+        .form-section {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .preview-section {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .form-group {
+            margin: 25px 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .input-container {
+            position: relative;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--white);
+            font-family: inherit;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.1);
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+        }
+        
+        .signature-container {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--medium-gray);
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .signature { 
+            padding: 0; 
+            background: var(--white); 
+            margin: 0 auto;
+            border: none !important;
+            transform: scale(1);
+            width: 600px;
+        }
+        
+        .actions {
+            margin: 35px 0 20px;
+        }
+        
+        .btn { 
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%); 
+            color: var(--white); 
+            padding: 18px 20px; 
+            border: none; 
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 139, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 139, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e7f3ff;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: var(--primary-blue);
+            font-weight: 600;
+            border: 1px solid #b3d9ff;
+        }
+        
+        .instructions {
+            background: #fff8e1;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .instructions h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .instructions li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            font-size: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .instructions li:before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .brand-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-bottom: 15px;
+        }
+        
+        /* Success message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+        }
+        
+        /* Form validation */
+        .error-message {
+            color: var(--accent-red);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        input.error {
+            border-color: var(--accent-red);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .vision-statement {
+                font-size: 18px;
+                padding: 20px;
+            }
+            
+            .form-section, .preview-section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Replace with your actual logo -->
+            <!-- <img src="assets/logo.png" alt="RBIDZ Logo" class="logo"> -->
+            <h1>RBIDZ SIGNATURE GENERATOR</h1>
+            <p>Create Professional Email Signatures in Seconds</p>
+        </div>
+        
+        <div class="vision-statement">
+            "Leading Investment Destination - Driving Economic Growth"
+        </div>
+        
+        <div class="content-grid">
+            <div class="form-section">
+                <h3 class="section-title">Your Information</h3>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-container">
+                        <input type="text" id="fullName" placeholder="Enter your full name" value="Lihle Msweli">
+                        <span class="input-icon">👤</span>
+                    </div>
+                    <div class="error-message" id="nameError">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="position">Position / Title</label>
+                    <div class="input-container">
+                        <input type="text" id="position" placeholder="Enter your position" value="Brand and Marketing Officer">
+                        <span class="input-icon">💼</span>
+                    </div>
+                    <div class="error-message" id="positionError">Please enter your position</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <div class="input-container">
+                        <input type="text" id="mobileNumber" placeholder="Enter your mobile number" value="+27 123 456 789">
+                        <span class="input-icon">📱</span>
+                    </div>
+                    <div class="error-message" id="mobileError">Please enter a valid South African number starting with +27</div>
+                </div>
+                
+                <div class="actions">
+                    <button type="button" class="btn" onclick="downloadPNG()">
+                        <span>DOWNLOAD SIGNATURE</span>
+                        <span>⬇️</span>
+                    </button>
+                </div>
+                
+                <div class="loading" id="loadingMessage">
+                    ⏳ Generating your professional signature... Please wait
+                </div>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Signature downloaded successfully!
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <h3 class="section-title">Signature Preview</h3>
+                
+                <div class="signature-container">
+                    <div class="signature" id="signaturePreview">
+                        <!-- OPTIMIZED SIGNATURE WITH NO BORDERS -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border: none; font-family: Arial, sans-serif;">
+                            <tr>
+                                <td style="padding: 0; position: relative; border: none;">
+                                    <!-- Local Background Image Container -->
+                                    <img src="assets/signature-bg.png" alt="RBIDZ" width="600" style="display: block; border: none; outline: none;">
+                                    
+                                    <!-- Name & Position - Top Left -->
+                                    <div style="position: absolute; top: 85px; left: 130px;">
+                                        <p style="color: #00008B; font-size: 22px; margin: 0; font-weight: bold; line-height: 24px;" id="previewName">Lihle Msweli</p>
+                                        <p style="color: #FF0000; font-size: 14px; margin: 0; line-height: 16px;" id="previewPosition">Brand and Marketing Officer</p>
+                                    </div>
+                                    
+                                    <!-- Mobile Number - SMALLER SIZE -->
+                                    <div style="position: absolute; top: 178px; left: 367px;">
+                                        <p style="color: #00008B; font-size: 10px; margin: 0; line-height: 12px; font-weight: normal;" id="previewMobile">
+                                            +27 123 456 789
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Social Media Icons - Back in Original Position -->
+                                    <div style="position: absolute; bottom: 10px; left: 30px;" class="social-icons">
+                                        <table border="0" cellpadding="0" cellspacing="0" style="border: none;">
+                                            <tr>
+                                                <td style="padding: 0 4px; border: none;">
+                                                    <a href="https://instagram.com/rbidz" target="_blank">
+                                                        <img src="assets/icons8-instagram-logo-50.png" width="20" height="20" alt="Instagram" style="display: block; border: none;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 4px; border: none;">
+                                                    <a href="https://facebook.com/rbidz" target="_blank">
+                                                        <img src="assets/icons8-facebook-50.png" width="20" height="20" alt="Facebook" style="display: block; border: none;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 4px; border: none;">
+                                                    <a href="https://www.rbidz.co.za" target="_blank">
+                                                        <img src="assets/icons8-website-50.png" width="20" height="20" alt="Website" style="display: block; border: none;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 4px; border: none;">
+                                                    <a href="https://twitter.com/rbidz" target="_blank">
+                                                        <img src="assets/icons8-x-50.png" width="20" height="20" alt="Twitter" style="display: block; border: none;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 4px; border: none;">
+                                                    <a href="https://linkedin.com/company/rbidz" target="_blank">
+                                                        <img src="assets/icons8-linkedin-50.png" width="20" height="20" alt="LinkedIn" style="display: block; border: none;">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h4>📋 How to Use</h4>
+            <ul>
+                <li>Fill in your details in the form on the left</li>
+                <li>Watch your signature update in real-time in the preview</li>
+                <li>Click "DOWNLOAD SIGNATURE" to save your professional signature</li>
+                <li>Add the downloaded PNG to your email client signature settings</li>
+            </ul>
+        </div>
+        
+        <div class="brand-footer">
+            RBIDZ Official Signature Generator • Professional Corporate Branding Tool
+        </div>
+    </div>
+
+    <script>
+        // Update signature preview when inputs change
+        document.getElementById('fullName').addEventListener('input', updatePreview);
+        document.getElementById('position').addEventListener('input', updatePreview);
+        document.getElementById('mobileNumber').addEventListener('input', updatePreview);
+        
+        function updatePreview() {
+            const fullName = document.getElementById('fullName').value;
+            const position = document.getElementById('position').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            
+            document.getElementById('previewName').textContent = fullName;
+            document.getElementById('previewPosition').textContent = position;
+            document.getElementById('previewMobile').textContent = mobileNumber;
+            
+            // Clear any previous error states
+            clearErrors();
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const fullName = document.getElementById('fullName').value;
+            const position = document.getElementById('position').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            
+            // Validate name
+            if (!fullName.trim()) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('fullName').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate position
+            if (!position.trim()) {
+                document.getElementById('positionError').style.display = 'block';
+                document.getElementById('position').classList.add('error');
+                isValid = false;
+            }
+            
+            // Validate mobile number
+            if (!mobileNumber.trim() || !mobileNumber.startsWith('+27')) {
+                document.getElementById('mobileError').style.display = 'block';
+                document.getElementById('mobileNumber').classList.add('error');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('input').forEach(el => {
+                el.classList.remove('error');
+            });
+        }
+
+        async function downloadPNG() {
+            const loadingMessage = document.getElementById('loadingMessage');
+            const successMessage = document.getElementById('successMessage');
+            const fullName = document.getElementById('fullName').value;
+            const position = document.getElementById('position').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+            
+            try {
+                loadingMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                
+                // Create a temporary signature element for PNG generation
+                const tempSignature = document.createElement('div');
+                tempSignature.innerHTML = document.getElementById('signaturePreview').innerHTML;
+                tempSignature.style.width = '600px';
+                tempSignature.style.background = 'white';
+                tempSignature.style.padding = '0';
+                tempSignature.style.margin = '0';
+                tempSignature.style.border = 'none';
+                document.body.appendChild(tempSignature);
+                
+                // Wait for images to load
+                await waitForImages(tempSignature);
+                
+                // Generate PNG using html2canvas
+                const canvas = await html2canvas(tempSignature, {
+                    scale: 2, // Higher resolution
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: null
+                });
+                
+                // Remove temporary element
+                document.body.removeChild(tempSignature);
+                
+                // Convert canvas to PNG and download
+                const link = document.createElement('a');
+                const fileName = `RBIDZ-Signature-${fullName.replace(/\s+/g, '-')}.png`;
+                link.download = fileName;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                loadingMessage.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                
+            } catch (error) {
+                loadingMessage.style.display = 'none';
+                console.error('Error generating PNG:', error);
+                alert('❌ Error generating signature. Please ensure all assets are in the "assets" folder and try again.');
+            }
+        }
+
+        function waitForImages(element) {
+            const images = element.getElementsByTagName('img');
+            const promises = Array.from(images).map(img => {
+                if (img.complete) {
+                    return Promise.resolve();
+                }
+                return new Promise((resolve) => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // Resolve even if error to prevent hanging
+                });
+            });
+            return Promise.all(promises);
+        }
+
+        // Initialize preview
+        updatePreview();
+    </script>
+</body>
+</html>
