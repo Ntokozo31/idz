@@ -361,33 +361,33 @@
             <p>© 2025 Richards Bay Industrial Development Zone. All rights reserved.</p>
         </footer>
     </div>
-
     <script>
         const IMAGES = {
-            SIDEBAR: "https://res.cloudinary.com/duivytudb/image/upload/v1763829771/signature01_Top_Left_315_x_300_mj6kqt.png",
-            HEADER:  "https://res.cloudinary.com/duivytudb/image/upload/v1763829928/signature01_Top_Right_402_x_125_ov0i3g.png",
+            SIDEBAR: "https://res.cloudinary.com/duivytudb/image/upload/v1764058616/signature01_...._iameq2.png",
+            HEADER: "https://res.cloudinary.com/duivytudb/image/upload/v1763829928/signature01_Top_Right_402_x_125_ov0i3g.png",
             ICON_WEB: "https://res.cloudinary.com/duivytudb/image/upload/v1763890164/website_35_jfosxk.png",
-            ICON_IN:  "https://res.cloudinary.com/duivytudb/image/upload/v1763890216/Linkedlin_35_nxh51v.png",
-            ICON_FB:  "https://res.cloudinary.com/duivytudb/image/upload/v1763889964/facebook_35_qiftfy.png",
-            ICON_X:   "https://res.cloudinary.com/duivytudb/image/upload/v1763890105/Twitter_35_dbbadw.png",
-            ICON_IG:  "https://res.cloudinary.com/duivytudb/image/upload/v1763890040/Instagram_35_aan8bx.png",
+            ICON_IN: "https://res.cloudinary.com/duivytudb/image/upload/v1763890216/Linkedlin_35_nxh51v.png",
+            ICON_FB: "https://res.cloudinary.com/duivytudb/image/upload/v1763889964/facebook_35_qiftfy.png",
+            ICON_X: "https://res.cloudinary.com/duivytudb/image/upload/v1763890105/Twitter_35_dbbadw.png",
+            ICON_IG: "https://res.cloudinary.com/duivytudb/image/upload/v1763890040/Instagram_35_aan8bx.png",
             ICON_LOCATION: "https://res.cloudinary.com/duivytudb/image/upload/v1763930848/location_hnyic2.gif",
+            VISION_GIF: "https://res.cloudinary.com/duivytudb/image/upload/v1764067265/Vanilla1x-1.0s-263px-250px_1_2_1_etdduj.gif",
             FOOTER_BG: "https://res.cloudinary.com/duivytudb/image/upload/v1763830105/signature01_Bottom_804_x_150_ustuer.png",
-            LINK_WEB:  "https://rbidz.co.za",
-            LINK_IN:   "https://www.linkedin.com/company/richards-bay-industrial-development-zone-company-pty-limited/",
-            LINK_FB:   "https://www.facebook.com/rbidzsa?mibextid=ZbWKwL",
-            LINK_X:    "https://twitter.com/rbidz",
-            LINK_IG:   "https://www.instagram.com/richardsbay_idz/"
+            LINK_WEB: "https://rbidz.co.za",
+            LINK_IN: "https://www.linkedin.com/company/richards-bay-industrial-development-zone-company-pty-limited/",
+            LINK_FB: "https://www.facebook.com/rbidzsa?mibextid=ZbWKwL",
+            LINK_X: "https://twitter.com/rbidz",
+            LINK_IG: "https://www.instagram.com/richardsbay_idz/"
         };
         
-        const TOTAL_WIDTH = 804; 
-
-        // Typewriter effect for vision statement
+        const TOTAL_WIDTH = 804;
+        
+        // Typewriter effect for vision statement in header
         const visionText = "Leading Investment Destination";
         let visionIndex = 0;
         let isDeleting = false;
         let visionTimeout;
-
+        
         function typeVision() {
             const visionElement = document.getElementById('vision-text');
             
@@ -419,7 +419,7 @@
                 visionElement.classList.remove('typing');
             }
         }
-
+        
         function formatMobileNumber() {
             const mobileInput = document.getElementById('mobile');
             let value = mobileInput.value.replace(/\s/g, ''); // Remove all spaces
@@ -434,87 +434,186 @@
             mobileInput.value = value;
             update();
         }
-
-        function getHTML(d) {
+        
+        function getHTML(d, isPreview = true) {
             // Remove spaces from mobile number for the tel link and add country code
             const mobileLink = "+27" + d.mobile.replace(/\s/g, '');
             // Format display with country code in brackets and spaces
             const mobileDisplay = "(+27) " + d.mobile;
-
-            return `
-            <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
-                
-                <div style="margin-bottom: 10px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif;">Best Regards,</div>
-
-                <table border="0" cellpadding="0" cellspacing="0" width="${TOTAL_WIDTH}" style="width: ${TOTAL_WIDTH}px; min-width: ${TOTAL_WIDTH}px; table-layout: fixed; font-family: Arial, sans-serif; background: white; border-collapse: collapse;">
-                    <tr>
-                        <td valign="top" width="315" height="300" style="width: 315px; height: 300px; background-image: url('${IMAGES.SIDEBAR}'); background-repeat: no-repeat; background-size: cover; padding: 0;">
-                            <div style="height: 120px; font-size: 0; line-height: 0;">&nbsp;</div>
-                            <div style="padding-left: 150px;">
-                                 <div style="font-size: 24px; color: #00008B; font-weight: bold; margin-bottom: 5px; white-space: nowrap; overflow: visible;">${d.name}</div>
-                                <div style="font-size: 22px; color: #FF0000; font-weight: bold; white-space: nowrap; overflow: visible;">${d.title}</div>
-                            </div>
-                        </td>
-
-                        <td valign="top" width="489" style="width: 489px; padding:0;">
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr><td><img src="${IMAGES.HEADER}" width="402" style="display:block; border:0; margin-left: 80px;"></td></tr>
-                                <tr>
-                                    <td style="padding: 0; padding-left: 30px; height: 175px; vertical-align: top;">
-                                        <div style="height: 120px; font-size: 0; line-height: 0;">&nbsp;</div>
-                                        <span style="font-size: 13px; color: #0000FF; line-height: 1.4; font-weight: bold; padding-left: 129px; display:block;">
-                                            Tel: 035 797 2687 &nbsp;|&nbsp; Mobile: <a href="tel:${mobileLink}" style="color: #0000FF; text-decoration: none;">${mobileDisplay}</a>
-                                        </span>
-                                        <div style="height: 10px; font-size: 0; line-height: 0;">&nbsp;</div>
-                                        <table border="0" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td width="80" style="width:80px;">&nbsp;</td>
-                                                <td valign="top" width="30"><img src="${IMAGES.ICON_LOCATION}" width="28" height="28" style="display:block;"></td>
-                                                <td valign="top" style="font-size: 13px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif; line-height: 1.4;">
-                                                    Richards Bay Industrial Development Zone SOC Ltd,<br>
-                                                    <span style="padding-left: 19px;">4 Harbor Arterial Road, Richards Bay, 3900</span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+            
+            if (isPreview) {
+                // BROWSER PREVIEW STRUCTURE (Improved table structure)
+                return `
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
                     
-                    <tr>
-                        <td colspan="2" width="${TOTAL_WIDTH}" height="150" style="width: ${TOTAL_WIDTH}px; height: 150px; background-image: url('${IMAGES.FOOTER_BG}'); background-repeat: no-repeat; background-size: cover; padding: 0;">
-                            <div style="height: 105px; font-size: 0; line-height: 0;">&nbsp;</div>
-                            <div style="padding-left: 45px;">
-                                <a href="${IMAGES.LINK_WEB}" style="text-decoration: none; display: inline-block;"><img src="${IMAGES.ICON_WEB}" width="35" height="35" style="border:0; display:block;"></a>
-                                <a href="${IMAGES.LINK_IN}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IN}" width="35" height="35" style="border:0; display:block;"></a>
-                                <a href="${IMAGES.LINK_FB}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_FB}" width="35" height="35" style="border:0; display:block;"></a>
-                                <a href="${IMAGES.LINK_X}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_X}" width="35" height="35" style="border:0; display:block;"></a>
-                                <a href="${IMAGES.LINK_IG}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IG}" width="35" height="35" style="border:0; display:block;"></a>
-                            </div>
-                        </td>
-                    </tr>
+                    <div style="margin-bottom: 10px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif;">Best Regards,</div>
+                    <table border="0" cellpadding="0" cellspacing="0" width="${TOTAL_WIDTH}" style="width: ${TOTAL_WIDTH}px; min-width: ${TOTAL_WIDTH}px; table-layout: fixed; font-family: Arial, sans-serif; background: white; border-collapse: collapse;">
+                        <tr>
+                            <td valign="top" width="315" height="300" style="width: 315px; height: 300px; padding: 0; position: relative;">
+                                <!-- Use img tag instead of background for better browser compatibility -->
+                                <img src="${IMAGES.SIDEBAR}" width="315" height="300" style="display: block; position: absolute; top: 0; left: 0; z-index: 1;" alt="RBIDZ Sidebar">
+                                
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" style="position: relative; z-index: 2;">
+                                    <tr>
+                                        <td height="120" style="height: 120px;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 165px;">
+                                            <div style="font-size: 24px; color: #00008B; font-weight: bold; margin-bottom: 5px; white-space: nowrap; overflow: visible;">${d.name}</div>
+                                            <div style="font-size: 22px; color: #FF0000; font-weight: bold; white-space: nowrap; overflow: visible;">${d.title}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="85" style="height: 85px;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 7px;">
+                                            <img src="${IMAGES.VISION_GIF}" width="240" height="40" alt="Leading Investment Destination" style="display: block; border: 0;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td valign="top" width="489" style="width: 489px; padding:0;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr><td><img src="${IMAGES.HEADER}" width="402" style="display:block; border:0; margin-left: 80px;"></td></tr>
+                                    <tr>
+                                        <td style="padding: 0; padding-left: 30px; height: 175px; vertical-align: top;">
+                                            <div style="height: 120px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                            <span style="font-size: 13px; color: #0000FF; line-height: 1.4; font-weight: bold; padding-left: 129px; display:block;">
+                                                Tel: 035 797 2687 &nbsp;|&nbsp; Mobile: <a href="tel:${mobileLink}" style="color: #0000FF; text-decoration: none;">${mobileDisplay}</a>
+                                            </span>
+                                            <div style="height: 10px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="80" style="width:80px;">&nbsp;</td>
+                                                    <td valign="top" width="30"><img src="${IMAGES.ICON_LOCATION}" width="28" height="28" style="display:block;"></td>
+                                                    <td valign="top" style="font-size: 13px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif; line-height: 1.4;">
+                                                        Richards Bay Industrial Development Zone SOC Ltd,<br>
+                                                        <span style="padding-left: 24px;">4 Harbor Arterial Road, Richards Bay, 3900</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" width="${TOTAL_WIDTH}" height="150" style="width: ${TOTAL_WIDTH}px; height: 150px; padding: 0; position: relative;">
+                                <img src="${IMAGES.FOOTER_BG}" width="${TOTAL_WIDTH}" height="150" style="display: block; position: absolute; top: 0; left: 0; z-index: 1;" alt="RBIDZ Footer">
+                                <div style="position: relative; z-index: 2; height: 100%;">
+                                    <div style="height: 105px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                    <div style="padding-left: 45px;">
+                                        <a href="${IMAGES.LINK_WEB}" style="text-decoration: none; display: inline-block;"><img src="${IMAGES.ICON_WEB}" width="35" height="35" style="border:0; display:block;"></a>
+                                        <a href="${IMAGES.LINK_IN}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IN}" width="35" height="35" style="border:0; display:block;"></a>
+                                        <a href="${IMAGES.LINK_FB}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_FB}" width="35" height="35" style="border:0; display:block;"></a>
+                                        <a href="${IMAGES.LINK_X}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_X}" width="35" height="35" style="border:0; display:block;"></a>
+                                        <a href="${IMAGES.LINK_IG}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IG}" width="35" height="35" style="border:0; display:block;"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 15px; font-family: Arial, sans-serif; font-size: 10px; color: #777; line-height: 1.4; text-align: justify;">
+                                <strong>Disclaimer:</strong> The information contained in this communication from the sender is confidential. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful.
+                            </td>
+                        </tr>
+                    </table>
+                </div>`;
+            } else {
+                // GMAIL STRUCTURE (Your original structure that works in Gmail)
+                return `
+                <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                    
+                    <div style="margin-bottom: 10px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif;">Best Regards,</div>
+                    <table border="0" cellpadding="0" cellspacing="0" width="${TOTAL_WIDTH}" style="width: ${TOTAL_WIDTH}px; min-width: ${TOTAL_WIDTH}px; table-layout: fixed; font-family: Arial, sans-serif; background: white; border-collapse: collapse;">
+                        <tr>
+                            <td valign="top" width="315" height="300" style="width: 315px; height: 300px; background-image: url('${IMAGES.SIDEBAR}'); background-repeat: no-repeat; background-size: cover; padding: 0;">
+                                
+                                <div style="height: 120px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                
+                                <div style="padding-left: 165px;">
+                                    <div style="font-size: 24px; color: #00008B; font-weight: bold; margin-bottom: 5px; white-space: nowrap; overflow: visible;">${d.name}</div>
+                                    <div style="font-size: 22px; color: #FF0000; font-weight: bold; white-space: nowrap; overflow: visible;">${d.title}</div>
+                                </div>
+                                
+                                <div style="height: 85px; font-size: 0; line-height: 0;">&nbsp;</div>
 
-                    <tr>
-                        <td colspan="2" style="padding-top: 15px; font-family: Arial, sans-serif; font-size: 10px; color: #777; line-height: 1.4; text-align: justify;">
-                            <strong>Disclaimer:</strong> The information contained in this communication from the sender is confidential. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful.
-                        </td>
-                    </tr>
-                </table>
-            </div>`;
+                                <div style="padding-left: 7px;">
+                                    <img src="${IMAGES.VISION_GIF}" width="240" height="40" alt="Leading Investment Destination" style="display: block; border: 0;">
+                                </div>
+
+                            </td>
+                            <td valign="top" width="489" style="width: 489px; padding:0;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr><td><img src="${IMAGES.HEADER}" width="402" style="display:block; border:0; margin-left: 80px;"></td></tr>
+                                    <tr>
+                                        <td style="padding: 0; padding-left: 30px; height: 175px; vertical-align: top;">
+                                            <div style="height: 120px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                            <span style="font-size: 13px; color: #0000FF; line-height: 1.4; font-weight: bold; padding-left: 129px; display:block;">
+                                                Tel: 035 797 2687 &nbsp;|&nbsp; Mobile: <a href="tel:${mobileLink}" style="color: #0000FF; text-decoration: none;">${mobileDisplay}</a>
+                                            </span>
+                                            <div style="height: 10px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="80" style="width:80px;">&nbsp;</td>
+                                                    <td valign="top" width="30"><img src="${IMAGES.ICON_LOCATION}" width="28" height="28" style="display:block;"></td>
+                                                    <td valign="top" style="font-size: 13px; color: #0000FF; font-weight: bold; font-family: Arial, sans-serif; line-height: 1.4;">
+                                                        Richards Bay Industrial Development Zone SOC Ltd,<br>
+                                                        <span style="padding-left: 24px;">4 Harbor Arterial Road, Richards Bay, 3900</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" width="${TOTAL_WIDTH}" height="150" style="width: ${TOTAL_WIDTH}px; height: 150px; background-image: url('${IMAGES.FOOTER_BG}'); background-repeat: no-repeat; background-size: cover; padding: 0;">
+                                <div style="height: 105px; font-size: 0; line-height: 0;">&nbsp;</div>
+                                <div style="padding-left: 45px;">
+                                    <a href="${IMAGES.LINK_WEB}" style="text-decoration: none; display: inline-block;"><img src="${IMAGES.ICON_WEB}" width="35" height="35" style="border:0; display:block;"></a>
+                                    <a href="${IMAGES.LINK_IN}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IN}" width="35" height="35" style="border:0; display:block;"></a>
+                                    <a href="${IMAGES.LINK_FB}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_FB}" width="35" height="35" style="border:0; display:block;"></a>
+                                    <a href="${IMAGES.LINK_X}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_X}" width="35" height="35" style="border:0; display:block;"></a>
+                                    <a href="${IMAGES.LINK_IG}" style="text-decoration: none; display: inline-block; margin-left: 5px;"><img src="${IMAGES.ICON_IG}" width="35" height="35" style="border:0; display:block;"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 15px; font-family: Arial, sans-serif; font-size: 10px; color: #777; line-height: 1.4; text-align: justify;">
+                                <strong>Disclaimer:</strong> The information contained in this communication from the sender is confidential. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful.
+                            </td>
+                        </tr>
+                    </table>
+                </div>`;
+            }
         }
-
+        
         function update() {
             const data = {
                 name: document.getElementById('name').value,
                 title: document.getElementById('title').value,
                 mobile: document.getElementById('mobile').value
             };
-            document.getElementById('render-area').innerHTML = getHTML(data);
+            
+            // For preview, use browser structure (isPreview = true)
+            document.getElementById('render-area').innerHTML = getHTML(data, true);
         }
-
+        
         function copyHTML() {
-            const html = document.getElementById('render-area').innerHTML;
+            const data = {
+                name: document.getElementById('name').value,
+                title: document.getElementById('title').value,
+                mobile: document.getElementById('mobile').value
+            };
+            
+            // For copying, use Gmail structure (isPreview = false)
+            const html = getHTML(data, false);
+            
             const listener = (e) => {
                 e.clipboardData.setData("text/html", html);
                 e.clipboardData.setData("text/plain", html);
@@ -526,7 +625,7 @@
             document.getElementById('msg').style.display = 'block';
             setTimeout(() => document.getElementById('msg').style.display = 'none', 3000);
         }
-
+        
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             update();
